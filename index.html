@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+</style>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body onload="
+    const oddsTree = { 
+        s: {
+            value: 28,
+            s: {
+                value: 35.7,
+                g: 50,
+                p: 50
+            },
+            g: {
+                value: 60.7,
+                g: 70.6,
+                p: 29.4
+            },
+            p: {
+                value: 3.6,
+                p: 100
+            }
+        },
+        g: {
+            value: 62,
+            s: {
+                value: 32.3,
+                g: 90,
+                p: 10
+            },
+            g: {
+                value: 40.3,
+                g: 88,
+                p: 12
+            },
+            p: {
+                value: 27.4,
+                s: 35.3,
+                g: 58.8,
+                p: 5.9
+            }
+        },
+        p: {
+            s: {
+                value: 50,
+                g: 80,
+                p: 20
+            },
+            g: {
+                value: 30,
+                g: 66.7,
+                p: 33.3
+            },
+            p: {
+                value: 20,
+                g: 50,
+                p: 50
+            }
+        }
+    };
+    let f = () => {
+        Object.entries(oddsTree).forEach(([t1_key, t1_value]) => {
+            Object.entries(t1_value).forEach(([t2_key, t2_value]) => {
+                if (typeof t2_value === 'object') {
+                    Object.entries(t2_value).forEach(([t3_key, t3_value]) => {
+                        if (typeof t3_value !== 'object') {
+                            console.log(`!${t1_key}${t2_key}: ${t3_key}=${t3_value}%`);
+                        }
+                    });
+                }
+            });
+        });
+    }
+">
+    <script>
+        f();
+    </script>
+</body>
