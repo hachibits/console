@@ -16,12 +16,14 @@ p: {value: 10, s: {value: 50, g: 80, p: 20}, g: {value: 30, g: 66.7, p: 33.3}, p
   let f = () => {
     Object.entries(oddsTree).forEach(([t1_key, t1_value]) => {
       Object.entries(t1_value).forEach(([t2_key, t2_value]) => {
-        if (typeof t2_value === 'object') {
+        if (t2_key !== 'value' && typeof t2_value === 'object') {
+          let a3 = `!${t1_key}${t2_key}: `;
           Object.entries(t2_value).forEach(([t3_key, t3_value]) => {
-            if (typeof t3_value !== 'object') {
-              console.log(`!${t1_key}${t2_key}: ${t3_key}=${t3_value}%`);
+            if (t3_key !== 'value' && typeof t3_value !== 'object') {
+              a3 += `${t3_key.toUpperCase()} ${t3_value}% `;
             }
           });
+          console.log(a3);
         }
       });
     });
